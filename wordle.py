@@ -4,6 +4,17 @@ Word_site = "https://www.mit.edu/~ecprice/wordlist.10000"
 response = requests.get(Word_site)
 WORDS = response.content.splitlines()
 letters = "abcdefghijklmnopqrstuvwxyz"
+
+# instead of maling a request to site,
+# you cane use a "english_wordlist_10k.txt"
+# file to inport words from there
+# you can use this code to get random word from this file:
+#
+# with open("english_wordlist_10k.txt", "r") as file:
+#    WORDS = file.read().splitlines()
+# random_word = random.choice(WORDS)
+
+
 def mainLoop():
     global game_won, attempts, attempts_passed, random_word
     random_word = random.choice(WORDS).decode("utf-8")
@@ -89,7 +100,7 @@ def mainLoop():
         else:
             break
 
-        
+
     print(" ")
     print(f"There are no letters at all: {', '.join(letters_tryed)}")
     print(f"Some letters guessed: {', '.join(some_letters)}")
